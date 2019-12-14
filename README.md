@@ -48,9 +48,6 @@ Docker-symfony gives you everything you need for developing Symfony application.
         $ sf doctrine:schema:update --force
         # Only if you have `doctrine/doctrine-fixtures-bundle` installed
         $ sf doctrine:fixtures:load --no-interaction
-        # Symfony3
-        $ sf3 doctrine:database:create
-        $ sf3 doctrine:schema:update --force
         # Only if you have `doctrine/doctrine-fixtures-bundle` installed
         $ sf3 doctrine:fixtures:load --no-interaction
         ```
