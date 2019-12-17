@@ -2,12 +2,15 @@
 FROM php:7.4-fpm
 ARG TIMEZONE
 
+ENV PHP_CS_FIXER_VERSION=2.16
+
 RUN apt-get update && apt-get install -y \
     openssl \
     git \
     unzip \
     curl \
-    gnupg
+    gnupg \
+    wget
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -48,7 +51,12 @@ RUN pecl install xdebug \
 && echo "xdebug.idekey=\"PHPSTORM\"" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
+# phpcs
+RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O php-cs-fixer \
+&& chmod a+x php-cs-fixer \
+&& mv php-cs-fixer /usr/local/bin/
 
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc \
 && echo 'alias WORKDIR="/var/www/symfony"' >> ~/.bashrc
+
 WORKDIR /var/www/symfony
