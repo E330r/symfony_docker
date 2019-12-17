@@ -35,8 +35,7 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
 # Type docker-php-ext-install to see available extensions
-RUN docker-php-ext-install pdo pdo_mysql
-
+RUN docker-php-ext-install pdo pdo_mysql opcache
 
 # install xdebug
 RUN pecl install xdebug \
