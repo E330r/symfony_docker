@@ -43,7 +43,7 @@ Docker-symfony gives you everything you need for developing Symfony application.
         ```bash
         $ docker-compose exec php bash
         $ composer install
-        # Symfony2
+        $ yarn install && yarn run encore dev
         $ sf doctrine:database:create
         $ sf doctrine:schema:update --force
         # Only if you have `doctrine/doctrine-fixtures-bundle` installed
